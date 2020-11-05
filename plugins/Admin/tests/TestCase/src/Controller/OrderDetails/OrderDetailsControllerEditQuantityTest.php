@@ -103,13 +103,20 @@ class OrderDetailsControllerEditQuantityTest extends OrderDetailsControllerTestC
         $this->assertMailCount(1);
     }
 
+    public function testEditOrderDetailQuantityAsSuperadminEmailDisabledWithConfig()
+    {
+        Configure::write('app.sendEmailWhenOrderDetailQuantityOrPriceChanged', false);
+        $this->loginAsSuperadmin();
+        $cart = $this->preparePricePerUnitOrder();
+        $orderDetailId = $cart->cart_products[0]->order_detail->id_order_detail;
+        $this->editOrderDetailQuantity($orderDetailId, 800.854, false);
+        $this->assertMailCount(1);
+    }
+
     private function preparePricePerUnitOrder()
     {
         $productIdA = 347; // forelle
-
-        $this->addProductToCart($productIdA, 1);
-        $this->addProductToCart($productIdA, 1); // addProductToCart needs to be called twice!
-
+        $this->addProductToCart($productIdA, 2);
         $this->finishCart(1, 1);
         $cartId = Configure::read('app.htmlHelper')->getCartIdFromCartFinishedUrl($this->_response->getHeaderLine('Location'));
         $cart = $this->getCartById($cartId);
