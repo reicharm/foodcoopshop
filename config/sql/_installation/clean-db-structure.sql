@@ -233,15 +233,33 @@ CREATE TABLE `fcs_images` (
   PRIMARY KEY (`id_image`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `fcs_invoice_taxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fcs_invoice_taxes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `invoice_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `tax_rate` double(20,6) NOT NULL DEFAULT '0.000000',
+  `total_price_tax_excl` double(20,6) NOT NULL DEFAULT '0.000000',
+  `total_price_tax` double(20,6) NOT NULL DEFAULT '0.000000',
+  `total_price_tax_incl` double(20,6) NOT NULL DEFAULT '0.000000',
+  PRIMARY KEY (`id`),
+  KEY `invoice_id` (`invoice_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `fcs_invoices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fcs_invoices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_manufacturer` int(10) unsigned NOT NULL DEFAULT '0',
-  `invoice_number` int(10) unsigned NOT NULL DEFAULT '0',
-  `send_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `invoice_number` varchar(14) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_customer` int(10) unsigned NOT NULL DEFAULT '0',
+  `paid_in_cash` tinyint(4) unsigned DEFAULT '0',
+  `filename` varchar(512) NOT NULL DEFAULT '',
+  `email_status` datetime DEFAULT NULL,
+  `cancellation_invoice_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -250,23 +268,23 @@ DROP TABLE IF EXISTS `fcs_manufacturer`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fcs_manufacturer` (
   `id_manufacturer` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL DEFAULT '',
+  `name` varchar(64) DEFAULT NULL,
   `description` longtext,
   `short_description` mediumtext,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `is_private` int(11) unsigned NOT NULL DEFAULT '0',
-  `uid_number` varchar(30) NOT NULL DEFAULT '',
-  `additional_text_for_invoice` mediumtext NOT NULL,
-  `iban` varchar(22) NOT NULL DEFAULT '',
-  `bic` varchar(11) NOT NULL DEFAULT '',
-  `bank_name` varchar(255) NOT NULL DEFAULT '',
-  `firmenbuchnummer` varchar(20) NOT NULL DEFAULT '',
-  `firmengericht` varchar(150) NOT NULL DEFAULT '',
-  `aufsichtsbehoerde` varchar(150) NOT NULL DEFAULT '',
-  `kammer` varchar(150) NOT NULL DEFAULT '',
-  `homepage` varchar(255) NOT NULL DEFAULT '',
+  `uid_number` varchar(30) DEFAULT NULL,
+  `additional_text_for_invoice` mediumtext,
+  `iban` varchar(22) DEFAULT NULL,
+  `bic` varchar(11) DEFAULT NULL,
+  `bank_name` varchar(255) DEFAULT NULL,
+  `firmenbuchnummer` varchar(20) DEFAULT NULL,
+  `firmengericht` varchar(150) DEFAULT NULL,
+  `aufsichtsbehoerde` varchar(150) DEFAULT NULL,
+  `kammer` varchar(150) DEFAULT NULL,
+  `homepage` varchar(255) DEFAULT NULL,
   `id_customer` int(10) unsigned DEFAULT NULL,
   `variable_member_fee` int(8) unsigned DEFAULT NULL,
   `send_invoice` tinyint(4) unsigned DEFAULT NULL,
@@ -302,6 +320,7 @@ CREATE TABLE `fcs_order_detail` (
   `id_tax` int(11) unsigned DEFAULT '0',
   `deposit` decimal(10,2) NOT NULL DEFAULT '0.00',
   `id_customer` int(10) unsigned NOT NULL,
+  `id_invoice` int(10) unsigned DEFAULT NULL,
   `id_cart_product` int(10) unsigned NOT NULL,
   `order_state` tinyint(4) unsigned NOT NULL,
   `pickup_day` date NOT NULL,
@@ -387,6 +406,7 @@ CREATE TABLE `fcs_payments` (
   `date_changed` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_transaction_add` datetime DEFAULT NULL,
   `transaction_text` mediumtext,
+  `invoice_id` int(10) unsigned DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `approval` tinyint(4) NOT NULL DEFAULT '0',
   `approval_comment` mediumtext,
@@ -466,6 +486,8 @@ DROP TABLE IF EXISTS `fcs_sliders`;
 CREATE TABLE `fcs_sliders` (
   `id_slider` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `image` varchar(255) DEFAULT NULL,
+  `link` varchar(999) DEFAULT NULL,
+  `is_private` int(11) unsigned NOT NULL DEFAULT '0',
   `position` int(10) unsigned NOT NULL DEFAULT '0',
   `active` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_slider`)

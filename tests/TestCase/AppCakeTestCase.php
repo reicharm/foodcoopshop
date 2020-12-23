@@ -375,9 +375,24 @@ abstract class AppCakeTestCase extends TestCase
 
     protected function prepareSendingOrderLists()
     {
+        $this->prepareSendingOrderListsOrInvoices(Configure::read('app.folder_order_lists'));
+    }
+
+    protected function prepareSendingInvoices()
+    {
+        $this->prepareSendingOrderListsOrInvoices(Configure::read('app.folder_invoices'));
+    }
+
+    protected function resetCustomerCreditBalance() {
+        $this->Payment = $this->getTableLocator()->get('Payments');
+        $this->dbConnection->execute('DELETE FROM ' . $this->Payment->getTable().' WHERE id = 2');
+    }
+
+    private function prepareSendingOrderListsOrInvoices($contentFolder)
+    {
         $folder = new Folder();
-        $folder->delete(Configure::read('app.folder_order_lists'));
-        $file = new File(Configure::read('app.folder_order_lists') . DS . '.gitignore', true);
+        $folder->delete($contentFolder);
+        $file = new File($contentFolder . DS . '.gitignore', true);
         $file->append('/*
 !.gitignore');
     }

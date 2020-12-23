@@ -57,20 +57,19 @@ return [
         'uploadedFilesDir' => DS . 'files' . DS . 'files',
         'customerImagesDir' => ROOT . DS . 'files_private'. DS . 'customers',
         'folder_invoices' => ROOT . DS . 'files_private'. DS . 'invoices',
-        'folder_order_lists' => ROOT . DS. 'files_private' . DS .'order_lists',
-        'folder_invoices' => ROOT . DS . 'files_private'. DS . 'invoices',
         'folder_order_lists' => ROOT . DS . 'files_private' . DS .'order_lists',
 
         /**
          * all the default values in this block can be overwritten in the manufacturer settings
          */
-        'defaultSendOrderList' => true,
-        'defaultSendInvoice' => true,
+        'defaultSendOrderList' => 1,
+        'defaultSendInvoice' => 1,
         'defaultTaxId' => 2,
-        'defaultSendInstantOrderNotification' => true,
-        'defaultSendOrderedProductDeletedNotification' => true,
-        'defaultSendOrderedProductPriceChangedNotification' => true,
-        'defaultSendOrderedProductAmountChangedNotification' => true,
+        'defaultSendInstantOrderNotification' => 1,
+        'defaultSendOrderedProductDeletedNotification' => 1,
+        'defaultSendOrderedProductPriceChangedNotification' => 1,
+        'defaultSendOrderedProductAmountChangedNotification' => 1,
+        'isDepositEnabled' => true,
         'isDepositPaymentCashless' => true,
         'depositPaymentCashlessStartDate' => '2016-01-01',
         'depositForManufacturersStartDate' => '2016-01-01',
@@ -98,6 +97,8 @@ return [
         'showPaymentInfoText' => true,
         'showManufacturerListAndDetailPage' => true,
         'showPickupPlaceInfo' => true,
+        'showTaxSumTableOnOrderDetailPdf' => false,
+        'selfServiceModeAutoLogoutDesktopEnabled' => true,
 
         /**
          * id of the category "all products"

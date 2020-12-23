@@ -19,10 +19,8 @@ foodcoopshop.SelfService = {
     init : function() {
         foodcoopshop.ModalLogout.init(document.location.href);
         this.initWindowResize();
-        if (!foodcoopshop.Helper.isMobile()) {
-            this.initAutoLogout();
-        }
         this.initSearchForm();
+        this.bindQuantityInUnitsInputFields();
         this.initDepositPayment();
     },
 
@@ -196,6 +194,15 @@ foodcoopshop.SelfService = {
             $(this).removeAttr('style');
         });
         $(rowId).find('.quantity-in-units-input-field-wrapper input').focus();
+    },
+
+    bindQuantityInUnitsInputFields: function(){
+        $('.quantity-in-units-input-field-wrapper input').on('keypress', function(e) {
+            if (e.which === 13) {
+                $(this).closest('.entity-wrapper').find('.btn-cart').trigger('click');
+                $(this).val('');
+            }
+        });
     },
 
     initCartErrors: function (cartErrors) {

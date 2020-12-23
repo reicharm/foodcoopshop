@@ -26,12 +26,16 @@ echo '<th class="right">';
 echo $this->Paginator->sort('sum_price', __d('admin', 'Price'));
 echo '</th>';
 
-if (Configure::read('app.isDepositPaymentCashless')) {
+if (Configure::read('app.isDepositEnabled') && Configure::read('app.isDepositPaymentCashless')) {
     echo '<th>'.__d('admin', 'Deposit').'</th>';
 }
 
 if (count($pickupDay) == 1) {
     echo '<th>'.__d('admin', 'Picked_up').'</th>';
+}
+
+if (Configure::read('appDb.FCS_SEND_INVOICES_TO_CUSTOMERS') && $appAuth->isSuperadmin()) {
+    echo '<th>'.__d('admin', 'Invoice').'</th>';
 }
 
 ?>

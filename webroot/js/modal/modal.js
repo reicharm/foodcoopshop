@@ -14,16 +14,28 @@
 
 foodcoopshop.Modal = {
 
+    getSuccessButton : function(selector) {
+        return $(selector + ' .modal-footer .btn-success');
+    },
+
     bindSuccessButton: function(selector, callback) {
-        $(selector + ' .modal-footer .btn-success').on('click', function() {
+
+        this.getSuccessButton(selector).on('click', function() {
             foodcoopshop.Helper.addSpinnerToButton($(this), 'fa-check');
             foodcoopshop.Helper.disableButton($(this));
             callback();
         });
+
+        $(selector).on('keypress', function(e) {
+            if (e.which === 13) {
+                foodcoopshop.Modal.getSuccessButton(selector).trigger('click');
+            }
+        });
+
     },
 
     resetButtons: function(selector) {
-        var successButton = $(selector + ' .modal-footer .btn-success');
+        var successButton = this.getSuccessButton(selector);
         foodcoopshop.Helper.removeSpinnerFromButton(successButton, 'fa-check');
         foodcoopshop.Helper.enableButton(successButton);
     },

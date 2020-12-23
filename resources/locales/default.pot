@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-10-17 21:39+0200\n"
+"POT-Creation-Date: 2020-12-15 16:18+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -156,6 +156,9 @@ msgid "New_products"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
 msgstr ""
 
 msgid "The_desired_amount_{0}_of_the_product_{1}_is_not_available_any_more_available_amount_{2}."
@@ -806,6 +809,9 @@ msgstr ""
 msgid "1_email_address_has_been_copied_successfully_to_your_clipboard."
 msgstr ""
 
+msgid "The_table_content_was_copied_successfully_to_your_clipboard."
+msgstr ""
+
 msgid "The_reason_for_changing_the_member_is_mandatory."
 msgstr ""
 
@@ -840,6 +846,24 @@ msgid "Add_product_feedback_explanation_text_{0}."
 msgstr ""
 
 msgid "Tip:_Change_delivery_rhythm_for_multiple_products:_Select_checkboxes_and_click_bottom_button."
+msgstr ""
+
+msgid "Generate_invoice"
+msgstr ""
+
+msgid "Really_generate_invoice_for_{0}?"
+msgstr ""
+
+msgid "Show_preview"
+msgstr ""
+
+msgid "Paid_in_cash"
+msgstr ""
+
+msgid "Really_cancel_invoice_number_{0}_of_{1}?"
+msgstr ""
+
+msgid "Cancel_invoice"
 msgstr ""
 
 msgid "Were_the_products_picked_up?"
@@ -1106,6 +1130,45 @@ msgstr ""
 msgid "Filename_Information-about-right-of-withdrawal"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
+msgid "Price_excl."
+msgstr ""
+
+msgid "VAT"
+msgstr ""
+
+msgid "Price_incl."
+msgstr ""
+
+msgid "Delivered_deposit"
+msgstr ""
+
+msgid "Payment_type_deposit_return"
+msgstr ""
+
+msgid "Total_sum"
+msgstr ""
+
+msgid "Generated_on_{0}"
+msgstr ""
+
+msgid "Page_{0}_of_{1}"
+msgstr ""
+
+msgid "Deleted_member"
+msgstr ""
+
+msgid "Order_day"
+msgstr ""
+
+msgid "Deleted_Member"
+msgstr ""
+
+msgid "Price_per_weight"
+msgstr ""
+
 msgid "Tax_rates_overview_table"
 msgstr ""
 
@@ -1121,34 +1184,13 @@ msgstr ""
 msgid "Sum_price_incl."
 msgstr ""
 
-msgid "Deleted_member"
-msgstr ""
-
-msgid "Price_excl."
-msgstr ""
-
-msgid "VAT"
-msgstr ""
-
-msgid "Order_day"
-msgstr ""
-
-msgid "Deleted_Member"
-msgstr ""
-
-msgid "Price_per_weight"
-msgstr ""
-
-msgid "Total_sum"
-msgstr ""
-
-msgid "Generated_on_{0}"
-msgstr ""
-
-msgid "Page_{0}_of_{1}"
-msgstr ""
-
 msgid "You_are_not_signed_in."
+msgstr ""
+
+msgid "Action_Log_Invoice_added"
+msgstr ""
+
+msgid "Action_Log_Invoice_cancelled"
 msgstr ""
 
 msgid "Action_Log_Product_added"
@@ -1421,9 +1463,6 @@ msgstr ""
 msgid "Action_Log_Superadmin_deploy_successful"
 msgstr ""
 
-msgid "Action_Log_Superadmin_deploy_failed"
-msgstr ""
-
 msgid "Action_Log_Attribute_added"
 msgstr ""
 
@@ -1466,10 +1505,10 @@ msgstr ""
 msgid "The_phone_number_is_not_valid."
 msgstr ""
 
-msgid "Please_enter_the_first_name_of_the_invoice_holder."
+msgid "Please_enter_the_first_name."
 msgstr ""
 
-msgid "Please_enter_the_last_name_of_the_invoice_holder."
+msgid "Please_enter_the_last_name."
 msgstr ""
 
 msgid "Please_enter_an_email_address."
@@ -1502,13 +1541,13 @@ msgstr ""
 msgid "Please_provide_a_valid_ordered_quantity_in_units_and_click_on_the_add_button."
 msgstr ""
 
+msgid "The_product_worth_{0}_cannot_be_added_to_your_cart_please_add_credit_({1})_(minimal_credit_is_{2})."
+msgstr ""
+
 msgid "The_desired_amount_{0}_is_not_valid."
 msgstr ""
 
 msgid "Product_with_id_{0}_does_not_exist."
-msgstr ""
-
-msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
 msgstr ""
 
 msgid "The_attribute_does_not_exist:_{0}"
@@ -1763,6 +1802,9 @@ msgstr ""
 msgid "Pickup_reminder_for"
 msgstr ""
 
+msgid "{0,plural,=1{1_invoice_was} other{#_invoices_were}}_generated_successfully."
+msgstr ""
+
 msgid "to_(time_context)"
 msgstr ""
 
@@ -1788,6 +1830,9 @@ msgid "member"
 msgstr ""
 
 msgid "Invoice_number_abbreviataion_{0}_{1}"
+msgstr ""
+
+msgid "Cancellation_invoice_number_abbreviataion_{0}_{1}"
 msgstr ""
 
 msgid "Order_lists_for_the_day"
@@ -1883,13 +1928,13 @@ msgstr ""
 msgid "Deposit_overview"
 msgstr ""
 
+msgid "Journal"
+msgstr ""
+
 msgid "Payment_type_credit_upload"
 msgstr ""
 
 msgid "Payment_type_payback"
-msgstr ""
-
-msgid "Payment_type_deposit_return"
 msgstr ""
 
 msgid "Payment_type_member_fee"
@@ -2264,9 +2309,6 @@ msgstr ""
 msgid "More_infos_to_product_{0}"
 msgstr ""
 
-msgid "Last_order_day"
-msgstr ""
-
 msgid "Instant_order"
 msgstr ""
 
@@ -2363,6 +2405,9 @@ msgstr ""
 msgid "You_can_find_a_detailed_list_of_your_order_in_the_attached_order_confirmation."
 msgstr ""
 
+msgid "The_information_about_right_of_withdrawal_is_mandatory_but_it_is_not_valid_for_perishable_goods."
+msgstr ""
+
 msgid "thank_you_for_your_purchase."
 msgstr ""
 
@@ -2447,7 +2492,7 @@ msgstr ""
 msgid "Order_overview"
 msgstr ""
 
-msgid "Order_of"
+msgid "Order"
 msgstr ""
 
 msgid "placed_on"

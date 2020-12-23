@@ -3,6 +3,8 @@
 namespace App\Model\Table;
 
 use Cake\Core\Configure;
+use Cake\Database\Query;
+use Cake\Database\Expression\QueryExpression;
 use Cake\Datasource\FactoryLocator;
 use Cake\Validation\Validator;
 
@@ -30,6 +32,9 @@ class OrderDetailsTable extends AppTable
 
         $this->belongsTo('Customers', [
             'foreignKey' => 'id_customer'
+        ]);
+        $this->belongsTo('Taxes', [
+            'foreignKey' => 'id_tax'
         ]);
         $this->hasOne('OrderDetailTaxes', [
             'foreignKey' => 'id_order_detail'
@@ -68,6 +73,19 @@ class OrderDetailsTable extends AppTable
         return $validator;
     }
 
+    public function getLastOrderDate($customerId)
+    {
+        $query = $this->find('all', [
+            'conditions' => [
+                'OrderDetails.id_customer' => $customerId,
+            ],
+            'order' => [
+                'OrderDetails.pickup_day' => 'DESC'
+            ]
+        ])->first();
+        return $query;
+    }
+
     public function getOrderDetailsForOrderListPreview($pickupDay)
     {
         $query = $this->find('all', [
@@ -79,6 +97,45 @@ class OrderDetailsTable extends AppTable
             ]
         ]);
         return $query;
+    }
+
+    public function getMemberFee($customerId, $year)
+    {
+
+        $productIds = Configure::read('appDb.FCS_MEMBER_FEE_PRODUCTS');
+
+        if ($productIds != '') {
+
+            $conditions = [
+                'OrderDetails.id_customer' => $customerId,
+                'OrderDetails.product_id IN' => explode(',', Configure::read('appDb.FCS_MEMBER_FEE_PRODUCTS')),
+            ];
+            $query = $this->find('all', [
+                'conditions' => $conditions,
+            ]);
+            if ($year != '') {
+                $query->where(function (QueryExpression $exp, Query $q) use ($year) {
+                    return $exp->addCase(
+                        [
+                            $q->newExpr()->eq('DATE_FORMAT(OrderDetails.pickup_day, \'%Y\')', $year),
+                        ],
+                    );
+                });
+            }
+            $query->select([
+                'SumPriceIncl' => $query->func()->sum('OrderDetails.total_price_tax_incl'),
+            ]);
+            $query->group('OrderDetails.id_customer');
+            $result = $query->toArray();
+
+            if (isset($result[0])) {
+                return $result[0]['SumPriceIncl'];
+            }
+
+        }
+
+        return 0;
+
     }
 
     public function getOrderDetailsForSendingOrderLists($pickupDay, $cronjobRunDay, $customerCanSelectPickupDay)
@@ -106,6 +163,48 @@ class OrderDetailsTable extends AppTable
         }
 
         return $query;
+    }
+
+    public function getTaxSums($orderDetails)
+    {
+        $taxRates = [];
+        $defaultArray = [
+            'sum_price_excl' => 0,
+            'sum_tax' => 0,
+            'sum_price_incl' => 0,
+        ];
+        foreach($orderDetails as $orderDetail) {
+            if (empty($orderDetail->tax)) {
+                $taxRate = 0;
+            } else {
+                $taxRate = $orderDetail->tax->rate;
+            }
+            $taxRate = Configure::read('app.numberHelper')->formatTaxRate($taxRate);
+            if (!isset($taxRates[$taxRate])) {
+                $taxRates[$taxRate] = $defaultArray;
+            }
+            $taxRates[$taxRate]['sum_price_excl'] += $orderDetail->total_price_tax_excl;
+            $taxRates[$taxRate]['sum_tax'] += $orderDetail->order_detail_tax->total_amount;
+            $taxRates[$taxRate]['sum_price_incl'] += $orderDetail->total_price_tax_incl;
+        }
+
+        return $taxRates;
+    }
+
+
+    public function getDepositTax($depositGross, $amount)
+    {
+        $vat = 0.2;
+        $depositGrossPerPiece = round($depositGross / $amount, 2);
+        $depositTax = $depositGrossPerPiece - round($depositGrossPerPiece / (1 + $vat), 2);
+        $depositTax = $depositTax * $amount;
+        return $depositTax;
+    }
+
+    public function getDepositNet($depositGross, $amount)
+    {
+        $depositNet = $depositGross - $this->getDepositTax($depositGross, $amount);
+        return $depositNet;
     }
 
     /**

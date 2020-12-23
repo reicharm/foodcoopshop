@@ -147,13 +147,13 @@ if (count($payments) == 0) {
 
         echo '<td style="text-align:center;">';
         $deletablePaymentTypes = ['product'];
-        if (!$appAuth->isCustomer() || Configure::read('app.isCustomerAllowedToModifyOwnOrders')) {
+        if ((!$appAuth->isCustomer() || Configure::read('app.isCustomerAllowedToModifyOwnOrders')) && Configure::read('app.isDepositEnabled')) {
             $deletablePaymentTypes[] = 'deposit';
         }
         if ($appAuth->isSuperadmin()) {
             $deletablePaymentTypes[] = 'payback';
         }
-        if (in_array($payment['type'], $deletablePaymentTypes) && $payment['approval'] != APP_ON) {
+        if (in_array($payment['type'], $deletablePaymentTypes) && $payment['approval'] != APP_ON && (is_null($payment['invoice_id']) || $payment['invoice_id'] == 0)) {
             echo $this->Html->link(
                 '<i class="fas fa-times-circle not-ok"></i>',
                 'javascript:void(0);',

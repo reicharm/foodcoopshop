@@ -6,7 +6,6 @@ use App\Test\TestCase\Traits\AppIntegrationTestTrait;
 use App\Test\TestCase\Traits\LoginTrait;
 use Cake\Core\Configure;
 use Cake\I18n\FrozenTime;
-use Cake\I18n\Time;
 use Laminas\Diactoros\UploadedFile;
 use Cake\TestSuite\EmailTrait;
 
@@ -253,7 +252,7 @@ class PaymentsControllerTest extends AppCakeTestCase
     {
         $this->changeConfiguration('FCS_CASHLESS_PAYMENT_ADD_TYPE', ConfigurationsTable::CASHLESS_PAYMENT_ADD_TYPE_LIST_UPLOAD);
         $this->loginAsSuperadmin();
-        $uploadFile = TESTS . 'config' . DS . 'data' . DS . 'test-data-raiffeisen-v2.csv';
+        $uploadFile = TESTS . 'config' . DS . 'data' . DS . 'test-data-raiffeisen.csv';
         $this->post(
             Configure::read('app.slugHelper')->getReport('product'),
             [
@@ -298,8 +297,8 @@ class PaymentsControllerTest extends AppCakeTestCase
 
         $this->assertFlashMessage('Ein Datensatz wurde erfolgreich importiert.');
         $payments = $this->Payment->find('all')->toArray();
-        $newPayment = $payments[1];
-        $this->assertEquals(2, count($payments));
+        $newPayment = $payments[2];
+        $this->assertEquals(3, count($payments));
         $this->assertEquals($newPaymentCustomerId, $newPayment->id_customer);
         $this->assertEquals('product', $newPayment->type);
         $this->assertEquals($newPaymentContent, $newPayment->transaction_text);

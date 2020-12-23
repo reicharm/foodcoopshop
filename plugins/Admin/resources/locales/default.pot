@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-10-17 21:39+0200\n"
+"POT-Creation-Date: 2020-12-20 19:52+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -185,6 +185,27 @@ msgstr ""
 msgid "Deposit_take_back_detail_for"
 msgstr ""
 
+msgid "Invoices"
+msgstr ""
+
+msgid "No_data_available_to_generate_an_invoice."
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Invoice_number_{0}_of_{1}_was_generated_successfully."
+msgstr ""
+
+msgid "Invoice_number_{0}_of_{1}_was_successfully_cancelled."
+msgstr ""
+
+msgid "Cancellation_invoice_number_{0}_was_generated_successfully."
+msgstr ""
+
+msgid "Journal"
+msgstr ""
+
 msgid "_Order_list_filename_"
 msgstr ""
 
@@ -270,6 +291,9 @@ msgid "An_email_was_sent_to_{0}_and_{1}."
 msgstr ""
 
 msgid "The_delivered_quantity_is_not_valid."
+msgstr ""
+
+msgid "The_new_price_would_be_{0}_for_{1}_please_check_the_unit."
 msgstr ""
 
 msgid "The_weight_of_the_ordered_product_{0}_(amount_{1})_was_successfully_apapted_from_{2}_to_{3}."
@@ -1064,7 +1088,7 @@ msgstr ""
 msgid "Deposit_overview_for_all_manufacturers"
 msgstr ""
 
-msgid "deposit"
+msgid "Deposit"
 msgstr ""
 
 msgid "There_is_no_{0}_available."
@@ -1098,6 +1122,51 @@ msgid "Empty_glasses_returned_by_manufacturer"
 msgstr ""
 
 msgid "Returned_deposit_by_member"
+msgstr ""
+
+msgid "All_amounts_in_{0}."
+msgstr ""
+
+msgid "Download_invoices"
+msgstr ""
+
+msgid "Copy_to_clipboard"
+msgstr ""
+
+msgid "Invoice_number_abbreviation"
+msgstr ""
+
+msgid "Invoice_date"
+msgstr ""
+
+msgid "Sum_excl_tax"
+msgstr ""
+
+msgid "Sum_tax"
+msgstr ""
+
+msgid "Sum_incl_tax"
+msgstr ""
+
+msgid "Paid_in_cash"
+msgstr ""
+
+msgid "Email_sent"
+msgstr ""
+
+msgid "Cancellation"
+msgstr ""
+
+msgid "Total_sum"
+msgstr ""
+
+msgid "Tax_overview_cash"
+msgstr ""
+
+msgid "Tax_overview_cashless"
+msgstr ""
+
+msgid "Tax_overview_total"
 msgstr ""
 
 msgid "Pickup_day"
@@ -1182,21 +1251,6 @@ msgid "To_save_long_description_press_save_and_then_edit_manufacturer."
 msgstr ""
 
 msgid "Will_be_shown_on_the_manufacturer_profile."
-msgstr ""
-
-msgid "Bank_account_data"
-msgstr ""
-
-msgid "are_not_visible_in_public_and_are_only_used_for_transferring_your_proceeds."
-msgstr ""
-
-msgid "Bank"
-msgstr ""
-
-msgid "IBAN"
-msgstr ""
-
-msgid "BIC"
 msgstr ""
 
 msgid "Company_data"
@@ -1377,9 +1431,6 @@ msgid "Zero_means_no_limit_and_global_limit_of_{0}_is_used."
 msgstr ""
 
 msgid "Pickup_days"
-msgstr ""
-
-msgid "Deposit"
 msgstr ""
 
 msgid "Stock_products"
@@ -1619,6 +1670,9 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
+msgid "Linked_to"
+msgstr ""
+
 msgid "Rank"
 msgstr ""
 
@@ -1638,6 +1692,9 @@ msgid "Average_turnover_for_months_where_products_were_delivered:_{0}"
 msgstr ""
 
 msgid "Variable_member_fee_is_included_in_turnover."
+msgstr ""
+
+msgid "Member_fee_products_are_excluded_from_statistics."
 msgstr ""
 
 msgid "Tax_rates_can_not_be_changed."
@@ -1691,6 +1748,27 @@ msgstr ""
 msgid "to"
 msgstr ""
 
+msgid "Sum_price_excl."
+msgstr ""
+
+msgid "Sum_price_incl."
+msgstr ""
+
+msgid "Bank_account_data"
+msgstr ""
+
+msgid "are_not_visible_in_public_and_are_only_used_for_transferring_your_proceeds."
+msgstr ""
+
+msgid "Bank"
+msgstr ""
+
+msgid "IBAN"
+msgstr ""
+
+msgid "BIC"
+msgstr ""
+
 msgid "Order_adaptions"
 msgstr ""
 
@@ -1734,6 +1812,9 @@ msgid "Click_to_cancel_product"
 msgstr ""
 
 msgid "Click_to_change_member"
+msgstr ""
+
+msgid "Invoice"
 msgstr ""
 
 msgid "Add_product_feedback"
@@ -1794,9 +1875,6 @@ msgid "Your_code_has_been_copied_successfully_into_the_clipboard."
 msgstr ""
 
 msgid "Please_add_this_code_to_your_transaction:_{0}"
-msgstr ""
-
-msgid "Copy_to_clipboard"
 msgstr ""
 
 msgid "Order_list_grouped_by"
@@ -2039,6 +2117,15 @@ msgstr ""
 msgid "As_your_order_is_longer_than_{0}_days_ago_you_get_this_reminder."
 msgstr ""
 
+msgid "Please_find_your_cancellation_invoice_attached."
+msgstr ""
+
+msgid "Please_find_your_current_invoice_attached."
+msgstr ""
+
+msgid "{0}_thanks_you_for_your_purchase!"
+msgstr ""
+
 msgid "this_invoice_contains_all_products_that_have_been_delivered_in_{0}."
 msgstr ""
 
@@ -2072,16 +2159,16 @@ msgstr ""
 msgid "Your_contact_person"
 msgstr ""
 
+msgid "Cancellation_invoice"
+msgstr ""
+
+msgid "Paid_in_cash_on_{0}."
+msgstr ""
+
 msgid "conveyed_for"
 msgstr ""
 
-msgid "Invoice_number_abbreviation"
-msgstr ""
-
 msgid "Orders_from"
-msgstr ""
-
-msgid "Invoice_date"
 msgstr ""
 
 msgid "Price_excl."

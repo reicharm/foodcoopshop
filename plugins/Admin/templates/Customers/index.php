@@ -32,6 +32,15 @@ use Cake\Core\Configure;
         <?php echo $this->Form->create(null, ['type' => 'get']); ?>
             <?php echo $this->Form->control('active', ['type' => 'select', 'label' => '', 'options' => $this->MyHtml->getActiveStates(), 'default' => isset($active) ? $active : '']); ?>
             <?php echo __d('admin', 'Last_pickup_day'); ?> <?php echo $this->element('dateFields', ['dateFrom' => $dateFrom, 'dateTo' => $dateTo, 'nameFrom' => 'dateFrom', 'nameTo' => 'dateTo']); ?>
+            <?php
+                echo $this->Form->control('year', [
+                    'type' => 'select',
+                    'label' => '',
+                    'empty' => __d('admin', 'Member_fee') . ' - ' . __d('admin', 'Show_all_years'),
+                    'options' => $years,
+                    'default' => $year != '' ? $year : ''
+                ]);
+            ?>
             <div class="right">
                 <?php echo $this->element('headerIcons', ['helperLink' => $this->Html->getDocsUrl(__d('admin', 'docs_route_members'))]); ?>
             </div>
@@ -62,6 +71,9 @@ if (Configure::read('app.emailOrderReminderEnabled')) {
 }
 echo '<th>' . $this->Paginator->sort('Customers.date_add',  __d('admin', 'Register_date')) . '</th>';
 echo '<th>'.__d('admin', 'Last_pickup_day').'</th>';
+if (Configure::read('appDb.FCS_MEMBER_FEE_PRODUCTS') != '') {
+    echo '<th>' . $this->Paginator->sort('Customers.member_fee', __d('admin', 'Member_fee')) . '</th>';
+}
 echo '<th>'.__d('admin', 'Comment_abbreviation').'</th>';
 echo '</tr>';
 
@@ -97,8 +109,10 @@ foreach ($customers as $customer) {
                 ]
             );
         }
-        if ($customer->order_detail_count <= 25) {
-            $customerName = '<i class="fas fa-carrot" title="'.__d('admin', 'Newbie_only_{0}_products_ordered.', [$customer->order_detail_count]).'"></i> ' . $customerName;
+        if (!empty($customer->valid_order_details) && $customer->valid_order_details[0]->valid_order_detail_count <= 25) {
+            $customerName = '<i class="fas fa-carrot" title="'.__d('admin', 'Newbie_only_{0}_products_ordered.', [
+                $customer->valid_order_details[0]->valid_order_detail_count
+            ]).'"></i> ' . $customerName;
         }
 
         echo '<span class="name">' . $this->Html->link($customerName, '/admin/order-details?&pickupDay[]='.Configure::read('app.timeHelper')->formatToDateShort('2014-01-01').'&pickupDay[]=' . Configure::read('app.timeHelper')->formatToDateShort('2022-12-31') . '&customerId=' . $customer->id_customer . '&sort=OrderDetails.pickup_day&direction=desc', [
@@ -181,8 +195,12 @@ foreach ($customers as $customer) {
     echo '</td>';
 
     echo '<td style="text-align:right">';
-        echo $this->Number->formatAsDecimal($customer->order_detail_count, 0);
-        $sumOrderDetailsCount += $customer->order_detail_count;
+        if (!empty($customer->valid_order_details)) {
+            echo $this->Number->formatAsDecimal($customer->valid_order_details[0]->valid_order_detail_count, 0);
+            $sumOrderDetailsCount += $customer->valid_order_details[0]->valid_order_detail_count;
+        } else {
+            echo $this->Number->formatAsDecimal(0, 0);
+        }
     echo '</td>';
 
     if ($this->Html->paymentIsCashless()) {
@@ -250,10 +268,16 @@ foreach ($customers as $customer) {
     echo '</td>';
 
     echo '<td>';
-        if (!empty($customer->valid_order_details)) {
-            echo $customer->valid_order_details[0]->pickup_day->i18nFormat(Configure::read('app.timeHelper')->getI18Format('DateShort'));
+        if (!empty($customer->last_order_date)) {
+            echo $customer->last_order_date->pickup_day->i18nFormat(Configure::read('app.timeHelper')->getI18Format('DateShort'));
         }
     echo '</td>';
+
+    if (Configure::read('appDb.FCS_MEMBER_FEE_PRODUCTS') != '') {
+        echo '<td style="text-align:right;">';
+            echo $this->Number->formatAsCurrency($customer->member_fee);
+        echo '</td>';
+    }
 
     echo '<td style="padding-left: 11px;">';
         $commentText = $customer->address_customer->comment != '' ? $customer->address_customer->comment : __d('admin', 'Add_comment');
@@ -273,7 +297,7 @@ foreach ($customers as $customer) {
 }
 
 echo '<tr>';
-echo '<td colspan="5"><b>' . $i . '</b> '.__d('admin', '{0,plural,=1{record} other{records}}', $i).'</td>';
+echo '<td colspan="6"><b>' . $i . '</b> '.__d('admin', '{0,plural,=1{record} other{records}}', $i).'</td>';
 echo '<td style="text-align:right"><b>' . $this->Number->formatAsDecimal($sumOrderDetailsCount, 0) . '</b></td>';
 if ($this->Html->paymentIsCashless()) {
     echo '<td></td>';
@@ -284,7 +308,11 @@ if (Configure::read('appDb.FCS_TIMEBASED_CURRENCY_ENABLED')) {
 if (Configure::read('app.emailOrderReminderEnabled')) {
     echo '<td><b>' . $sumEmailReminders . '</b></td>';
 }
-echo '<td colspan="4"></td>';
+$colspan = 3;
+if (Configure::read('appDb.FCS_MEMBER_FEE_PRODUCTS') != '') {
+    $colspan = 4;
+}
+echo '<td colspan="'.$colspan.'"></td>';
 echo '</tr>';
 
 echo '</table>';

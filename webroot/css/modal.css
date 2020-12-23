@@ -151,8 +151,16 @@ body.iframe_start_page {
 #modal-text h3 {
     font-size: 16px;
 }
+#modal-image .modal-body {
+    max-height: calc(100vh - 120px);
+    min-height: 400px;
+    overflow-y: auto;
+    text-align: center;
+}
 #modal-image .modal-dialog img {
-    width: 100%;
+    width: auto;
+    max-width: 766px;
+    max-height: calc(100vh - 154px);
 }
 #modal-product-add input[type="text"],
 #modal-product-name-edit input[type="text"] {
@@ -273,4 +281,10 @@ body.iframe_start_page {
     margin-left: 20px;
     margin-top: 5px;
     list-style: disc;
+}
+#modal-invoice-for-customer .modal-dialog {
+    max-width: 520px;
+}
+#modal-invoice-for-customer .checkbox input[type="checkbox"] {
+    float: left;
 }

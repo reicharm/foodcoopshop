@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-10-17 21:39+0200\n"
+"POT-Creation-Date: 2020-12-20 19:52+0100\n"
 "PO-Revision-Date: 2020-09-15 09:13+0200\n"
 "Last-Translator: Patryk Sobczak <firerain.tgz@gmail.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -192,6 +192,31 @@ msgstr "Konto kaucji"
 msgid "Deposit_take_back_detail_for"
 msgstr "Sczegóły odbioru kaucji dla"
 
+#, fuzzy
+msgid "Invoices"
+msgstr "Data faktury"
+
+msgid "No_data_available_to_generate_an_invoice."
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+#, fuzzy
+msgid "Invoice_number_{0}_of_{1}_was_generated_successfully."
+msgstr "Płatność ({0}, {1}) została usunięta pomyślnie."
+
+#, fuzzy
+msgid "Invoice_number_{0}_of_{1}_was_successfully_cancelled."
+msgstr "Płatność ({0}, {1}) została usunięta pomyślnie."
+
+#, fuzzy
+msgid "Cancellation_invoice_number_{0}_was_generated_successfully."
+msgstr "Płatność ({0}, {1}) została usunięta pomyślnie."
+
+msgid "Journal"
+msgstr ""
+
 msgid "_Order_list_filename_"
 msgstr "_Lista_zamowien_"
 
@@ -284,6 +309,9 @@ msgstr "Mail został wysłany do {0}."
 #, fuzzy
 msgid "The_delivered_quantity_is_not_valid."
 msgstr "Konto zostało aktywowane."
+
+msgid "The_new_price_would_be_{0}_for_{1}_please_check_the_unit."
+msgstr ""
 
 msgid "The_weight_of_the_ordered_product_{0}_(amount_{1})_was_successfully_apapted_from_{2}_to_{3}."
 msgstr "Waga zamówionego produktu {0} (ilość {1}) została zmodyfikowana z {2} na {3}."
@@ -1106,8 +1134,7 @@ msgstr "products"
 msgid "Deposit_overview_for_all_manufacturers"
 msgstr "Suma rekompensat kaucji dla producentów"
 
-#, fuzzy
-msgid "deposit"
+msgid "Deposit"
 msgstr "Kaucja"
 
 msgid "There_is_no_{0}_available."
@@ -1144,6 +1171,56 @@ msgstr "Zwrócono puste opakowanie"
 #, fuzzy
 msgid "Returned_deposit_by_member"
 msgstr "Zwrócony wkład"
+
+#, fuzzy
+msgid "All_amounts_in_{0}."
+msgstr "Kwota w {0}"
+
+msgid "Download_invoices"
+msgstr ""
+
+msgid "Copy_to_clipboard"
+msgstr ""
+
+msgid "Invoice_number_abbreviation"
+msgstr "Faktura nr"
+
+msgid "Invoice_date"
+msgstr "Data faktury"
+
+msgid "Sum_excl_tax"
+msgstr ""
+
+msgid "Sum_tax"
+msgstr ""
+
+msgid "Sum_incl_tax"
+msgstr ""
+
+#, fuzzy
+msgid "Paid_in_cash"
+msgstr "Zapłacone przez wszystkich członków w {0}"
+
+#, fuzzy
+msgid "Email_sent"
+msgstr "Mail został wysłany do {0}."
+
+#, fuzzy
+msgid "Cancellation"
+msgstr "Anuluj"
+
+#, fuzzy
+msgid "Total_sum"
+msgstr "Nowa suma łącznie"
+
+msgid "Tax_overview_cash"
+msgstr ""
+
+msgid "Tax_overview_cashless"
+msgstr ""
+
+msgid "Tax_overview_total"
+msgstr ""
 
 msgid "Pickup_day"
 msgstr "Dzień odbioru"
@@ -1231,21 +1308,6 @@ msgstr ""
 
 msgid "Will_be_shown_on_the_manufacturer_profile."
 msgstr "Będzie widoczne na stronie profilowej producenta."
-
-msgid "Bank_account_data"
-msgstr "Dane konta bankowego"
-
-msgid "are_not_visible_in_public_and_are_only_used_for_transferring_your_proceeds."
-msgstr "nie jest widoczne publicznie. Będzie używane wyłącznie do przelewów na twoje konto bankowe."
-
-msgid "Bank"
-msgstr "Ban"
-
-msgid "IBAN"
-msgstr "IBAN"
-
-msgid "BIC"
-msgstr "BIC"
 
 msgid "Company_data"
 msgstr "Dane firmy"
@@ -1434,9 +1496,6 @@ msgstr "0 oznacza, że limit globalny {0} został zużyty."
 
 msgid "Pickup_days"
 msgstr "Dni odbioru"
-
-msgid "Deposit"
-msgstr "Kaucja"
 
 msgid "Stock_products"
 msgstr "Produkty magazynowane"
@@ -1679,6 +1738,10 @@ msgstr "Obraz suwaka"
 msgid "Width"
 msgstr "Szerokość"
 
+#, fuzzy
+msgid "Linked_to"
+msgstr "Link"
+
 msgid "Rank"
 msgstr "Pozycja"
 
@@ -1700,6 +1763,9 @@ msgid "Average_turnover_for_months_where_products_were_delivered:_{0}"
 msgstr ""
 
 msgid "Variable_member_fee_is_included_in_turnover."
+msgstr ""
+
+msgid "Member_fee_products_are_excluded_from_statistics."
 msgstr ""
 
 msgid "Tax_rates_can_not_be_changed."
@@ -1755,6 +1821,29 @@ msgstr "1 dzień wstecz"
 msgid "to"
 msgstr "do"
 
+#, fuzzy
+msgid "Sum_price_excl."
+msgstr "Cena z wyłączeniem"
+
+#, fuzzy
+msgid "Sum_price_incl."
+msgstr "Cena z"
+
+msgid "Bank_account_data"
+msgstr "Dane konta bankowego"
+
+msgid "are_not_visible_in_public_and_are_only_used_for_transferring_your_proceeds."
+msgstr "nie jest widoczne publicznie. Będzie używane wyłącznie do przelewów na twoje konto bankowe."
+
+msgid "Bank"
+msgstr "Ban"
+
+msgid "IBAN"
+msgstr "IBAN"
+
+msgid "BIC"
+msgstr "BIC"
+
 msgid "Order_adaptions"
 msgstr "Mod. zamówień"
 
@@ -1800,6 +1889,10 @@ msgstr "Kliknij aby anulować produkt"
 #, fuzzy
 msgid "Click_to_change_member"
 msgstr "Kliknij aby zmienić cenę"
+
+#, fuzzy
+msgid "Invoice"
+msgstr "Data faktury"
 
 #, fuzzy
 msgid "Add_product_feedback"
@@ -1863,9 +1956,6 @@ msgid "Your_code_has_been_copied_successfully_into_the_clipboard."
 msgstr "Twoje konto zostało usunięte pomyślnie."
 
 msgid "Please_add_this_code_to_your_transaction:_{0}"
-msgstr ""
-
-msgid "Copy_to_clipboard"
 msgstr ""
 
 msgid "Order_list_grouped_by"
@@ -2126,6 +2216,16 @@ msgstr "Nie zapomnij, że masz produkty do odbioru w {0}."
 msgid "As_your_order_is_longer_than_{0}_days_ago_you_get_this_reminder."
 msgstr "Otrzymujesz to przypomnienie ponieważ twoje zamówienie zostało złożone wcześniej niż {0} dni temu."
 
+#, fuzzy
+msgid "Please_find_your_cancellation_invoice_attached."
+msgstr "Więcej informacji można znaleźć w {0}."
+
+msgid "Please_find_your_current_invoice_attached."
+msgstr ""
+
+msgid "{0}_thanks_you_for_your_purchase!"
+msgstr ""
+
 msgid "this_invoice_contains_all_products_that_have_been_delivered_in_{0}."
 msgstr "ta faktura zawiera wszystkie produkty, które zostały dostarczone dnia {0}."
 
@@ -2159,17 +2259,19 @@ msgstr "W celu zalogowania się proszę użyć adresu email z tej wiadomości. A
 msgid "Your_contact_person"
 msgstr "Twoja osoba kontaktowa"
 
+#, fuzzy
+msgid "Cancellation_invoice"
+msgstr "Anuluj"
+
+#, fuzzy
+msgid "Paid_in_cash_on_{0}."
+msgstr "Zapłacone przez wszystkich członków w {0}"
+
 msgid "conveyed_for"
 msgstr "przekazane"
 
-msgid "Invoice_number_abbreviation"
-msgstr "Faktura nr"
-
 msgid "Orders_from"
 msgstr "Zamówienia od"
-
-msgid "Invoice_date"
-msgstr "Data faktury"
 
 msgid "Price_excl."
 msgstr "Cena z wyłączeniem"
@@ -2217,6 +2319,18 @@ msgstr "Wagi dostarczonych produktów mogą ulec zmianie, więc cena również m
 msgid "Product_ID"
 msgstr "Produkt"
 
+#, fuzzy
+#~ msgid "Invoice_number_abbreviation_of_cancelled_invoice"
+#~ msgstr "Faktura nr"
+
+#, fuzzy
+#~ msgid "The_invoice_was_generated_successfully."
+#~ msgstr "Komentarz został zmodyfikowany pomyślnie."
+
+#, fuzzy
+#~ msgid "deposit"
+#~ msgstr "Kaucja"
+
 #~ msgid "Of_the_{0}_on_the_credit_account_{1}_are_reserved_for_deposit_compensation_payments._As_long_as_this_amount_is_negative_money_for_deposit_compensation_payments_is_available."
 #~ msgstr "{1} (z {0} na koncie kredytowym) zarezerwowano na poczet rekompensat kaucji. Dopóki kwota jest ujemna, są środki na rekompensaty."
 
@@ -2236,10 +2350,6 @@ msgstr "Produkt"
 
 #~ msgid "Order_lists_for_the_day"
 #~ msgstr "Listy zamówień dla"
-
-#, fuzzy
-#~ msgid "Email_sent_to:{0}"
-#~ msgstr "Mail został wysłany do {0}."
 
 #, fuzzy
 #~ msgid "Feedback_to_product"

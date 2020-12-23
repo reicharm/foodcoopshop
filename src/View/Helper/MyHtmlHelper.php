@@ -34,6 +34,30 @@ class MyHtmlHelper extends HtmlHelper
         parent::__construct($View, $config);
     }
 
+    public function getLegalTextsSubfolder()
+    {
+        $subfolder = 'directSelling';
+        if (Configure::read('appDb.FCS_SEND_INVOICES_TO_CUSTOMERS')) {
+            $subfolder = 'retail';
+        }
+        return $subfolder;
+    }
+
+    public function getPlatformOwnerForLegalTexts()
+    {
+        $result = '';
+        if (Configure::read('appDb.FCS_PLATFORM_OWNER') != '') {
+            $result .= Configure::read('appDb.FCS_PLATFORM_OWNER');
+        } else {
+            $result .= Configure::read('appDb.FCS_APP_NAME');
+            $result .= '<br />'.$this->getAddressFromAddressConfiguration();
+            if (Configure::read('appDb.FCS_APP_ADDITIONAL_DATA') != '') {
+                $result .= '<br />' . Configure::read('appDb.FCS_APP_ADDITIONAL_DATA');
+            }
+        }
+        return $result;
+    }
+
     public function removeTimestampFromFile($file) {
         $file = explode('?', $file);
         return $file[0];
@@ -94,6 +118,9 @@ class MyHtmlHelper extends HtmlHelper
             '2-week' => $this->getDeliveryRhythmString(false, 'week', 2),
             '4-week' => $this->getDeliveryRhythmString(false, 'week', 4),
             '1-month' => $this->getDeliveryRhythmString(false, 'month', 1),
+            '2-month' => $this->getDeliveryRhythmString(false, 'month', 2),
+            '3-month' => $this->getDeliveryRhythmString(false, 'month', 3),
+            '4-month' => $this->getDeliveryRhythmString(false, 'month', 4),
             '0-month' => $this->getDeliveryRhythmString(false, 'month', 0),
             '0-individual' => $this->getDeliveryRhythmString(false, 'individual', 0)
         ];
@@ -484,6 +511,9 @@ class MyHtmlHelper extends HtmlHelper
     {
         $tabs = [];
         foreach($this->getPaymentTexts() as $key => $paymentText) {
+            if ($key == 'deposit' && !Configure::read('app.isDepositEnabled')) {
+                continue;
+            }
             $tabs[] = [
                 'name' => $paymentText,
                 'url' => Configure::read('app.slugHelper')->getReport($key),
@@ -495,11 +525,18 @@ class MyHtmlHelper extends HtmlHelper
             'url' => Configure::read('app.slugHelper')->getCreditBalanceSum(),
             'key' => 'credit_balance_sum',
         ];
-        if (1) {
+        if (Configure::read('app.isDepositEnabled') && $this->paymentIsCashless() && Configure::read('app.isDepositPaymentCashless')) {
             $tabs[] = [
                 'name' => __('Deposit_overview'),
                 'url' => Configure::read('app.slugHelper')->getDepositOverviewDiagram(),
                 'key' => 'deposit_overview',
+            ];
+        }
+        if (Configure::read('appDb.FCS_SEND_INVOICES_TO_CUSTOMERS')) {
+            $tabs[] = [
+                'name' => __('Journal'),
+                'url' => Configure::read('app.slugHelper')->getInvoices(),
+                'key' => 'invoices',
             ];
         }
         return $tabs;
@@ -510,7 +547,7 @@ class MyHtmlHelper extends HtmlHelper
         $paymentTexts = [
             'product' => __('Payment_type_credit_upload'),
             'payback' => __('Payment_type_payback'),
-            'deposit' => __('Payment_type_deposit_return')
+            'deposit' => __('Payment_type_deposit_return'),
         ];
         if (Configure::read('app.memberFeeEnabled')) {
             $paymentTexts['member_fee'] = __('Payment_type_member_fee');
@@ -736,10 +773,10 @@ class MyHtmlHelper extends HtmlHelper
         return $url;
     }
 
-    public function getInvoiceLink($manufacturerName, $manufacturerId, $invoiceDate, $invoiceNumber)
+    public function getInvoiceLink($name, $id, $invoiceDate, $invoiceNumber)
     {
         $url = Configure::read('app.folder_invoices') . DS . date('Y', strtotime($invoiceDate)) . DS . date('m', strtotime($invoiceDate)) . DS;
-        $url .= $invoiceDate . '_' . StringComponent::slugify($manufacturerName) . '_' . $manufacturerId . __('_Invoice_filename_') . $invoiceNumber . '_' . StringComponent::slugify(Configure::read('appDb.FCS_APP_NAME')) . '.pdf';
+        $url .= $invoiceDate . '_' . StringComponent::slugify($name) . '_' . $id . __('_Invoice_filename_') . $invoiceNumber . '_' . StringComponent::slugify(Configure::read('appDb.FCS_APP_NAME')) . '.pdf';
         return $url;
     }
 

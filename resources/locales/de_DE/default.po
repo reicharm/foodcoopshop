@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-10-17 21:39+0200\n"
-"PO-Revision-Date: 2020-10-19 09:23+0200\n"
+"POT-Creation-Date: 2020-12-15 16:18+0100\n"
+"PO-Revision-Date: 2020-12-19 21:55+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 msgid "Access_denied_please_sign_in."
 msgstr "Zugriff verweigert, bitte melde dich an."
@@ -158,6 +158,9 @@ msgstr "Neue Produkte"
 
 msgid "Search"
 msgstr "Suche"
+
+msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
+msgstr "Bitte lade neues Guthaben auf.<br />Dein Guthaben abzüglich Warenkorb beträgt {0}, du kannst bis {1} bestellen."
 
 msgid "The_desired_amount_{0}_of_the_product_{1}_is_not_available_any_more_available_amount_{2}."
 msgstr "Die gewünschte Anzahl {0} des Produktes {1} ist leider nicht mehr verfügbar. Verfügbare Menge: {2}"
@@ -547,7 +550,7 @@ msgid "ordered_by"
 msgstr "bestellt von"
 
 msgid "Explaination_text_apdapt_price_form_apapt_weight."
-msgstr "Um das Gewicht anzupassen, ändere bitte den Wert \"Gewicht\" zwei Spalten weiter rechts. Der Preis wird dann automatisch angepasst und das tatsächlich gelieferte Gewicht scheint auf der Rechnung auf."
+msgstr "Um das Gewicht anzupassen, ändere bitte den Wert \"Gewicht\" weiter rechts. Der Preis wird dann automatisch angepasst und das tatsächlich gelieferte Gewicht scheint auf der Rechnung auf."
 
 msgid "Why_is_price_adapted_(mandatory_field)?"
 msgstr "Warum wird der Preis angepasst (Pflichtfeld)?"
@@ -807,6 +810,9 @@ msgstr "{0} E-Mail-Adressen wurden erfolgreich in deine Zwischenablage kopiert."
 msgid "1_email_address_has_been_copied_successfully_to_your_clipboard."
 msgstr "Eine E-Mail-Adresse wurde erfolgreich in deine Zwischenablage kopiert."
 
+msgid "The_table_content_was_copied_successfully_to_your_clipboard."
+msgstr "Der Inhalt der Tabelle wurde erfolgreich in deine Zwischenablage kopiert."
+
 msgid "The_reason_for_changing_the_member_is_mandatory."
 msgstr "Der Grund für die Änderung des Mitglieds ist ein Pflichtfeld."
 
@@ -842,6 +848,24 @@ msgstr "Dein Feedback wird dem Hersteller {0} nach dem Speichern automatisch per
 
 msgid "Tip:_Change_delivery_rhythm_for_multiple_products:_Select_checkboxes_and_click_bottom_button."
 msgstr "Du kannst den Lieferrhythmus von mehreren Produkten gleichzeitig ändern, indem du sie links auswählst und auf den Button ganz unten klickst."
+
+msgid "Generate_invoice"
+msgstr "Rechnung erstellen"
+
+msgid "Really_generate_invoice_for_{0}?"
+msgstr "Möchtest du wirklich die Rechnung für {0} erstellen?"
+
+msgid "Show_preview"
+msgstr "Vorschau anzeigen"
+
+msgid "Paid_in_cash"
+msgstr "Bar bezahlt"
+
+msgid "Really_cancel_invoice_number_{0}_of_{1}?"
+msgstr "Möchtest du die Rechnung {0} von {1} wirklich stornieren?"
+
+msgid "Cancel_invoice"
+msgstr "Rechnung stornieren"
 
 msgid "Were_the_products_picked_up?"
 msgstr "Wurden die Produkte abgeholt?"
@@ -1107,6 +1131,45 @@ msgstr "Deine Einkaufstasche war leer."
 msgid "Filename_Information-about-right-of-withdrawal"
 msgstr "Informationen-ueber-Ruecktrittsrecht"
 
+msgid "ID"
+msgstr ""
+
+msgid "Price_excl."
+msgstr "Preis exkl."
+
+msgid "VAT"
+msgstr "USt."
+
+msgid "Price_incl."
+msgstr "Preis inkl."
+
+msgid "Delivered_deposit"
+msgstr "Pfand geliefert"
+
+msgid "Payment_type_deposit_return"
+msgstr "Pfand-Rückgabe"
+
+msgid "Total_sum"
+msgstr "Gesamtsumme"
+
+msgid "Generated_on_{0}"
+msgstr "Generiert am {0}"
+
+msgid "Page_{0}_of_{1}"
+msgstr "Seite {0} von {1}"
+
+msgid "Deleted_member"
+msgstr "Gelöschtes Mitglied"
+
+msgid "Order_day"
+msgstr "Bestelltag"
+
+msgid "Deleted_Member"
+msgstr "Gelöschtes Mitglied"
+
+msgid "Price_per_weight"
+msgstr "Preis nach Gewicht"
+
 msgid "Tax_rates_overview_table"
 msgstr "Übersichtstabelle nach Steuersatz"
 
@@ -1122,35 +1185,14 @@ msgstr "Summe Steuer"
 msgid "Sum_price_incl."
 msgstr "Summe Preis inkl."
 
-msgid "Deleted_member"
-msgstr "Gelöschtes Mitglied"
-
-msgid "Price_excl."
-msgstr "Preis exkl."
-
-msgid "VAT"
-msgstr "USt."
-
-msgid "Order_day"
-msgstr "Bestelltag"
-
-msgid "Deleted_Member"
-msgstr "Gelöschtes Mitglied"
-
-msgid "Price_per_weight"
-msgstr "Preis nach Gewicht"
-
-msgid "Total_sum"
-msgstr "Gesamtsumme"
-
-msgid "Generated_on_{0}"
-msgstr "Generiert am {0}"
-
-msgid "Page_{0}_of_{1}"
-msgstr "Seite {0} von {1}"
-
 msgid "You_are_not_signed_in."
 msgstr "Du bist nicht angemeldet."
+
+msgid "Action_Log_Invoice_added"
+msgstr "Rechnung: erstellt"
+
+msgid "Action_Log_Invoice_cancelled"
+msgstr "Rechnung: storniert"
 
 msgid "Action_Log_Product_added"
 msgstr "Produkt: erstellt"
@@ -1422,9 +1464,6 @@ msgstr "Cronjob: Guthaben überprüfen"
 msgid "Action_Log_Superadmin_deploy_successful"
 msgstr "Superadmin: Update eingespielt"
 
-msgid "Action_Log_Superadmin_deploy_failed"
-msgstr "Superadmin: Update gescheitert"
-
 msgid "Action_Log_Attribute_added"
 msgstr "Variante: erstellt"
 
@@ -1467,11 +1506,11 @@ msgstr "Die Handynummer ist nicht gültig."
 msgid "The_phone_number_is_not_valid."
 msgstr "Die Telefonnummer ist nicht gültig."
 
-msgid "Please_enter_the_first_name_of_the_invoice_holder."
-msgstr "Bitte gib den Vornamen des Rechnungsempfängers an."
+msgid "Please_enter_the_first_name."
+msgstr "Bitte gib den Vornamen an."
 
-msgid "Please_enter_the_last_name_of_the_invoice_holder."
-msgstr "Bitte gib den Nachnamen des Rechnungsempfängers an."
+msgid "Please_enter_the_last_name."
+msgstr "Bitte gib den Nachnamen an."
 
 msgid "Please_enter_an_email_address."
 msgstr "Bitte gib eine E-Mail-Adresse an."
@@ -1503,14 +1542,14 @@ msgstr "Bitte gib maximal {0} Zeichen ein."
 msgid "Please_provide_a_valid_ordered_quantity_in_units_and_click_on_the_add_button."
 msgstr "Bitte trage das entnommene Gewicht ein und klicke danach auf die Einkaufstasche."
 
+msgid "The_product_worth_{0}_cannot_be_added_to_your_cart_please_add_credit_({1})_(minimal_credit_is_{2})."
+msgstr "Das Produkt um {0} kann nicht in den Warenkorb gelegt werden, bitte lade neues Guthaben auf.<br />Dein Guthaben abzüglich Warenkorb beträgt {1}, du kannst bis {2} bestellen."
+
 msgid "The_desired_amount_{0}_is_not_valid."
 msgstr "Die gewünschte Anzahl {0} ist nicht gültig."
 
 msgid "Product_with_id_{0}_does_not_exist."
 msgstr "Das Produkt mit der ID {0} ist nicht vorhanden."
-
-msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
-msgstr "Bitte lade neues Guthaben auf.<br />Dein Guthaben abzüglich Warenkorb beträgt {0}, du kannst bis {1} bestellen."
 
 msgid "The_attribute_does_not_exist:_{0}"
 msgstr "Die Variante existiert nicht: {0}"
@@ -1764,6 +1803,9 @@ msgstr "morgen"
 msgid "Pickup_reminder_for"
 msgstr "Abhol-Erinnerung für"
 
+msgid "{0,plural,=1{1_invoice_was} other{#_invoices_were}}_generated_successfully."
+msgstr "{0,plural,=1{1 Rechnung wurde} other{# Rechnungen wurden}} erfolgreich erstellt."
+
 msgid "to_(time_context)"
 msgstr "bis"
 
@@ -1790,6 +1832,9 @@ msgstr "Mitglied"
 
 msgid "Invoice_number_abbreviataion_{0}_{1}"
 msgstr "Rechnung Nr. {0}, {1}"
+
+msgid "Cancellation_invoice_number_abbreviataion_{0}_{1}"
+msgstr "Storno-Rechnung Nr. {0}, {1}"
 
 msgid "Order_lists_for_the_day"
 msgstr "Bestellungen für den"
@@ -1884,14 +1929,14 @@ msgstr "Guthaben-Übersicht"
 msgid "Deposit_overview"
 msgstr "Pfand-Übersicht"
 
+msgid "Journal"
+msgstr "Journal"
+
 msgid "Payment_type_credit_upload"
 msgstr "Guthaben-Aufladung"
 
 msgid "Payment_type_payback"
 msgstr "Rückzahlung"
-
-msgid "Payment_type_deposit_return"
-msgstr "Pfand-Rückgabe"
 
 msgid "Payment_type_member_fee"
 msgstr "Mitgliedsbeitrag"
@@ -2265,9 +2310,6 @@ msgstr "Neu"
 msgid "More_infos_to_product_{0}"
 msgstr "Mehr Infos zu {0}"
 
-msgid "Last_order_day"
-msgstr "Bestellschluss"
-
 msgid "Instant_order"
 msgstr "Sofort-Bestellung"
 
@@ -2362,7 +2404,10 @@ msgid "The_amount_was_reduced_from_your_credit_balance."
 msgstr "Der Betrag wurde von deinem Guthaben abgebucht."
 
 msgid "You_can_find_a_detailed_list_of_your_order_in_the_attached_order_confirmation."
-msgstr "Eine detaillierte Auflistung deiner Bestellung findest du in der angehängten Bestellübersicht (PDF). Die Informationen zum Rücktrittsrecht sind gesetzlich vorgeschrieben, das Rücktrittsrecht für verderbliche Waren ist allerdings ausgeschlossen."
+msgstr "Eine detaillierte Auflistung deiner Bestellung findest du in der angehängten Bestellübersicht (PDF)."
+
+msgid "The_information_about_right_of_withdrawal_is_mandatory_but_it_is_not_valid_for_perishable_goods."
+msgstr "Die Informationen zum Rücktrittsrecht sind gesetzlich vorgeschrieben, das Rücktrittsrecht für verderbliche Waren ist allerdings ausgeschlossen."
 
 msgid "thank_you_for_your_purchase."
 msgstr "Danke für deinen Einkauf."
@@ -2448,14 +2493,39 @@ msgstr "Unzutreffendes streichen"
 msgid "Order_overview"
 msgstr "Bestellübersicht"
 
-msgid "Order_of"
-msgstr "Bestellung vom"
+msgid "Order"
+msgstr "Bestellung"
 
 msgid "placed_on"
 msgstr "getätigt am"
 
 msgid "Prices_are_including_vat."
 msgstr "Die Preise verstehen sich inklusive Umsatzsteuer."
+
+#~ msgid "Please_enter_the_first_name_of_the_invoice_holder."
+#~ msgstr "Bitte gib den Vornamen des Rechnungsempfängers an."
+
+#~ msgid "Please_enter_the_last_name_of_the_invoice_holder."
+#~ msgstr "Bitte gib den Nachnamen des Rechnungsempfängers an."
+
+#~ msgid "Copied_successfully_to_your_clipboard."
+#~ msgstr "Das Kopieren in die Zwischenablage war erfolgreich."
+
+#~ msgid "Last_order_day"
+#~ msgstr "Bestellschluss"
+
+#~ msgid "Invoices"
+#~ msgstr "Rechnungen"
+
+#~ msgid "Action_Log_Superadmin_deploy_failed"
+#~ msgstr "Superadmin: Update gescheitert"
+
+#, fuzzy
+#~ msgid "Generate_invoice_for_customer"
+#~ msgstr "Generierte Rechnungen"
+
+#~ msgid "VAT_rate"
+#~ msgstr "Steuersatz"
 
 #~ msgid "Shopping_limit_reached"
 #~ msgstr "Guthaben-Limit erreicht"

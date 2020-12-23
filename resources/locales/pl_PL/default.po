@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-10-17 21:39+0200\n"
+"POT-Creation-Date: 2020-12-15 16:18+0100\n"
 "PO-Revision-Date: 2020-05-14 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -210,6 +210,9 @@ msgstr "Nowe produkty"
 # Search
 msgid "Search"
 msgstr "Szukaj"
+
+msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
+msgstr ""
 
 # The desired amount {0} of the product {1} is not available any more. Available amount: {2}
 msgid "The_desired_amount_{0}_of_the_product_{1}_is_not_available_any_more_available_amount_{2}."
@@ -1087,6 +1090,11 @@ msgstr "adresy mailowe ({0}) zostały pomyślnie skopiowane do schowka."
 msgid "1_email_address_has_been_copied_successfully_to_your_clipboard."
 msgstr "Adres mailowy został pomyślnie skopiowany do schowka."
 
+# One email address has been copied successfully to your clipboard.
+#, fuzzy
+msgid "The_table_content_was_copied_successfully_to_your_clipboard."
+msgstr "Adres mailowy został pomyślnie skopiowany do schowka."
+
 msgid "The_reason_for_changing_the_member_is_mandatory."
 msgstr ""
 
@@ -1134,6 +1142,34 @@ msgstr "Dodać nowy produkt?"
 
 msgid "Tip:_Change_delivery_rhythm_for_multiple_products:_Select_checkboxes_and_click_bottom_button."
 msgstr ""
+
+# Generated invoices
+#, fuzzy
+msgid "Generate_invoice"
+msgstr "Wygenerowane faktury"
+
+# Generated invoices
+#, fuzzy
+msgid "Really_generate_invoice_for_{0}?"
+msgstr "Wygenerowane faktury"
+
+# Show more
+#, fuzzy
+msgid "Show_preview"
+msgstr "Pokaż więcej"
+
+msgid "Paid_in_cash"
+msgstr ""
+
+# Do you really want to activate the member {0}?
+#, fuzzy
+msgid "Really_cancel_invoice_number_{0}_of_{1}?"
+msgstr "Na pewno chcesz aktywować członka {0}?"
+
+# Generated invoices
+#, fuzzy
+msgid "Cancel_invoice"
+msgstr "Wygenerowane faktury"
 
 # Were the products picked up?
 msgid "Were_the_products_picked_up?"
@@ -1490,6 +1526,61 @@ msgstr "Twój koszyk był pusty."
 msgid "Filename_Information-about-right-of-withdrawal"
 msgstr "Informacja-o-prawie-do-odstapienia"
 
+msgid "ID"
+msgstr ""
+
+# Price excl.
+msgid "Price_excl."
+msgstr "Cena z wyłączeniem"
+
+# VAT
+msgid "VAT"
+msgstr "VAT"
+
+# Price excl.
+#, fuzzy
+msgid "Price_incl."
+msgstr "Cena z wyłączeniem"
+
+# Delivered weight
+#, fuzzy
+msgid "Delivered_deposit"
+msgstr "Dostarczona waga"
+
+# Deposit return
+msgid "Payment_type_deposit_return"
+msgstr "Zwrot kaucji"
+
+# Total sum
+msgid "Total_sum"
+msgstr "Suma łącznie"
+
+# Generated invoices
+#, fuzzy
+msgid "Generated_on_{0}"
+msgstr "Wygenerowane faktury"
+
+# Page {0} of {1}
+msgid "Page_{0}_of_{1}"
+msgstr "Strona {0} z {1}"
+
+# Deleted member?
+#, fuzzy
+msgid "Deleted_member"
+msgstr "Usunąć członka?"
+
+# Order day
+msgid "Order_day"
+msgstr "Dzień zamówienia"
+
+# Deleted member
+msgid "Deleted_Member"
+msgstr "Usuń członka"
+
+# Price per weight
+msgid "Price_per_weight"
+msgstr "Cena za wagę"
+
 # Tax rates overview table
 msgid "Tax_rates_overview_table"
 msgstr "Tabela stawek podatkowych"
@@ -1511,47 +1602,19 @@ msgstr "Suma podatków"
 msgid "Sum_price_incl."
 msgstr "Suma cen łącznie z"
 
-# Deleted member?
-#, fuzzy
-msgid "Deleted_member"
-msgstr "Usunąć członka?"
-
-# Price excl.
-msgid "Price_excl."
-msgstr "Cena z wyłączeniem"
-
-# VAT
-msgid "VAT"
-msgstr "VAT"
-
-# Order day
-msgid "Order_day"
-msgstr "Dzień zamówienia"
-
-# Deleted member
-msgid "Deleted_Member"
-msgstr "Usuń członka"
-
-# Price per weight
-msgid "Price_per_weight"
-msgstr "Cena za wagę"
-
-# Total sum
-msgid "Total_sum"
-msgstr "Suma łącznie"
-
-# Generated invoices
-#, fuzzy
-msgid "Generated_on_{0}"
-msgstr "Wygenerowane faktury"
-
-# Page {0} of {1}
-msgid "Page_{0}_of_{1}"
-msgstr "Strona {0} z {1}"
-
 # Your are not signed in.
 msgid "You_are_not_signed_in."
 msgstr "Nie jesteś zalogowany."
+
+# Slider: Added
+#, fuzzy
+msgid "Action_Log_Invoice_added"
+msgstr "Suwak: Dodano"
+
+# Ordered product: Cancelled
+#, fuzzy
+msgid "Action_Log_Invoice_cancelled"
+msgstr "Zamówiony produkt: Anulowano"
 
 # Product: Added
 msgid "Action_Log_Product_added"
@@ -1918,10 +1981,6 @@ msgstr "Cronjob: Sprawdzono salda kredytowe"
 msgid "Action_Log_Superadmin_deploy_successful"
 msgstr "Superadmin: Wdrożenie pomyślnie"
 
-# Superadmin: Deploy failed
-msgid "Action_Log_Superadmin_deploy_failed"
-msgstr "Superadmin: Wdrożenie nieudane"
-
 # Attribute: created
 msgid "Action_Log_Attribute_added"
 msgstr "Atrybut: Utworzono"
@@ -1978,13 +2037,15 @@ msgstr "Numer komórkowy jest nieprawidłowy."
 msgid "The_phone_number_is_not_valid."
 msgstr "Numer komórkowy jest nieprawidłowy."
 
-# Please enter the first name of the invoice holder.
-msgid "Please_enter_the_first_name_of_the_invoice_holder."
-msgstr "Podaj imię właściciela faktury."
+# Please enter your first name.
+#, fuzzy
+msgid "Please_enter_the_first_name."
+msgstr "Podaj swoje imię."
 
-# Please enter the last name of the invoice holder.
-msgid "Please_enter_the_last_name_of_the_invoice_holder."
-msgstr "Podaj nazwisko właściciela faktury."
+# Please enter your last name.
+#, fuzzy
+msgid "Please_enter_the_last_name."
+msgstr "Podaj swoje nazwisko."
 
 # Please enter an email address.
 msgid "Please_enter_an_email_address."
@@ -2026,6 +2087,9 @@ msgstr "Wprowadź najwyżej {0} znaków."
 msgid "Please_provide_a_valid_ordered_quantity_in_units_and_click_on_the_add_button."
 msgstr "Podaj wartość."
 
+msgid "The_product_worth_{0}_cannot_be_added_to_your_cart_please_add_credit_({1})_(minimal_credit_is_{2})."
+msgstr ""
+
 # The desired amount {0} is not valid.
 msgid "The_desired_amount_{0}_is_not_valid."
 msgstr "Wymagana ilość {0} jest nieprawidłowa."
@@ -2033,9 +2097,6 @@ msgstr "Wymagana ilość {0} jest nieprawidłowa."
 # The product with id {0} does not exist.
 msgid "Product_with_id_{0}_does_not_exist."
 msgstr "Produkt o id {0} nie istnieje."
-
-msgid "Please_add_credit_({0})_(minimal_credit_is_{1})."
-msgstr ""
 
 # The attribute does not exist: {0}
 msgid "The_attribute_does_not_exist:_{0}"
@@ -2378,6 +2439,11 @@ msgstr "jutro"
 msgid "Pickup_reminder_for"
 msgstr "Przypomnienie o odbiorze dla"
 
+# Account created successfully
+#, fuzzy
+msgid "{0,plural,=1{1_invoice_was} other{#_invoices_were}}_generated_successfully."
+msgstr "Konto zostało utworzone pomyślnie"
+
 # to
 msgid "to_(time_context)"
 msgstr "do"
@@ -2414,6 +2480,11 @@ msgstr "Członek"
 # Invoice nº
 #, fuzzy
 msgid "Invoice_number_abbreviataion_{0}_{1}"
+msgstr "Faktura nr"
+
+# Invoice nº
+#, fuzzy
+msgid "Cancellation_invoice_number_abbreviataion_{0}_{1}"
 msgstr "Faktura nr"
 
 # Send order list day
@@ -2542,6 +2613,9 @@ msgstr "Przegląd zamówień"
 msgid "Deposit_overview"
 msgstr "Przegląd zamówień"
 
+msgid "Journal"
+msgstr ""
+
 # Credit upload
 msgid "Payment_type_credit_upload"
 msgstr "Przesyłanie kredytu"
@@ -2549,10 +2623,6 @@ msgstr "Przesyłanie kredytu"
 # Payback
 msgid "Payment_type_payback"
 msgstr "Zwrot"
-
-# Deposit return
-msgid "Payment_type_deposit_return"
-msgstr "Zwrot kaucji"
 
 # Member fee
 msgid "Payment_type_member_fee"
@@ -3051,10 +3121,6 @@ msgstr "Nowy"
 msgid "More_infos_to_product_{0}"
 msgstr "Więcej informacji o produkcie {0}"
 
-# Last order day
-msgid "Last_order_day"
-msgstr "Ostatni dzień zamówień"
-
 # Instant order
 msgid "Instant_order"
 msgstr "Zamówienie błyskawiczne"
@@ -3185,6 +3251,11 @@ msgstr "Kwota obciąży saldo kredytowe."
 msgid "You_can_find_a_detailed_list_of_your_order_in_the_attached_order_confirmation."
 msgstr "Szczegółową listę zamówionych produktów można znaleźć w załączonym potwierdzeniu zamówienia."
 
+# I accept the {0} and accept that this is not valid for perishable goods.
+#, fuzzy
+msgid "The_information_about_right_of_withdrawal_is_mandatory_but_it_is_not_valid_for_perishable_goods."
+msgstr "Akceptuję {0} i rozumiem, że nie dotyczy to towarów łatwo psujących się."
+
 # thank you for order from {0}.
 #, fuzzy
 msgid "thank_you_for_your_purchase."
@@ -3298,7 +3369,8 @@ msgid "Order_overview"
 msgstr "Przegląd zamówień"
 
 # Order of
-msgid "Order_of"
+#, fuzzy
+msgid "Order"
 msgstr "Zamówienie"
 
 # placed on
@@ -3308,6 +3380,37 @@ msgstr "złożone w dniu"
 # The prices include the VAT.
 msgid "Prices_are_including_vat."
 msgstr "Ceny zawierają podatek VAT."
+
+# Please enter the first name of the invoice holder.
+#~ msgid "Please_enter_the_first_name_of_the_invoice_holder."
+#~ msgstr "Podaj imię właściciela faktury."
+
+# Please enter the last name of the invoice holder.
+#~ msgid "Please_enter_the_last_name_of_the_invoice_holder."
+#~ msgstr "Podaj nazwisko właściciela faktury."
+
+# One email address has been copied successfully to your clipboard.
+#, fuzzy
+#~ msgid "Copied_successfully_to_your_clipboard."
+#~ msgstr "Adres mailowy został pomyślnie skopiowany do schowka."
+
+# Last order day
+#~ msgid "Last_order_day"
+#~ msgstr "Ostatni dzień zamówień"
+
+# Superadmin: Deploy failed
+#~ msgid "Action_Log_Superadmin_deploy_failed"
+#~ msgstr "Superadmin: Wdrożenie nieudane"
+
+# Generated invoices
+#, fuzzy
+#~ msgid "Generate_invoice_for_customer"
+#~ msgstr "Wygenerowane faktury"
+
+# Tax rate
+#, fuzzy
+#~ msgid "VAT_rate"
+#~ msgstr "Stawka podatkowa"
 
 # Shopping limit reached
 #~ msgid "Shopping_limit_reached"

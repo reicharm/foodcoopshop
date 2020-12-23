@@ -229,6 +229,10 @@ class OrderDetailsController extends AdminAppController
         $this->OrderDetail = $this->getTableLocator()->get('OrderDetails');
         $odParams = $this->OrderDetail->getOrderDetailParams($this->AppAuth, '', '', '', $pickupDay, '', '');
         $contain = $odParams['contain'];
+        if (Configure::read('app.showTaxSumTableOnOrderDetailPdf')) {
+            $contain[] = 'OrderDetailTaxes';
+            $contain[] = 'Taxes';
+        }
         $this->OrderDetail->getAssociation('PickupDayEntities')->setConditions([
             'PickupDayEntities.pickup_day' => Configure::read('app.timeHelper')->formatToDbFormatDate($pickupDay[0])
         ]);
@@ -261,10 +265,43 @@ class OrderDetailsController extends AdminAppController
             $preparedOrderDetails[$orderDetail->id_customer][] = $orderDetail;
         }
 
+        if (Configure::read('app.showTaxSumTableOnOrderDetailPdf')) {
+
+            $taxRates = [];
+
+            $depositVatRate = Configure::read('app.numberHelper')->parseFloatRespectingLocale(Configure::read('appDb.FCS_DEPOSIT_TAX_RATE'));
+            $depositVatRate = Configure::read('app.numberHelper')->formatTaxRate($depositVatRate);
+
+            foreach($preparedOrderDetails as $customerId => $orderDetails) {
+
+                $taxRates[$customerId] = $this->OrderDetail->getTaxSums($orderDetails);
+                $defaultArray = [
+                    'sum_price_excl' => 0,
+                    'sum_tax' => 0,
+                    'sum_price_incl' => 0,
+                ];
+
+                foreach($orderDetails as $orderDetail) {
+                    if (!isset($taxRates[$customerId][$depositVatRate])) {
+                        $taxRates[$customerId][$depositVatRate] = $defaultArray;
+                    }
+                    $taxRates[$customerId][$depositVatRate]['sum_price_excl'] += $this->OrderDetail->getDepositNet($orderDetail->deposit, $orderDetail->product_amount);
+                    $taxRates[$customerId][$depositVatRate]['sum_tax'] += $this->OrderDetail->getDepositTax($orderDetail->deposit, $orderDetail->product_amount);
+                    $taxRates[$customerId][$depositVatRate]['sum_price_incl'] += $orderDetail->deposit;
+                }
+
+                $taxRates[$customerId] = $this->OrderDetail->clearZeroArray($taxRates[$customerId]);
+                ksort($taxRates[$customerId]);
+
+            }
+
+        }
+
         $pdfWriter = new OrderDetailsPdfWriter();
         $pdfWriter->setData([
             'orderDetails' => $preparedOrderDetails,
             'appAuth' => $this->AppAuth,
+            'taxRates' => isset($taxRates) ? $taxRates : null,
         ]);
         die($pdfWriter->writeInline());
     }
@@ -445,6 +482,7 @@ class OrderDetailsController extends AdminAppController
             ],
             'reduced_price' => 0
         ];
+
         foreach($orderDetails as $orderDetail) {
             $sums['records_count']++;
             if ($groupBy == '') {
@@ -519,6 +557,12 @@ class OrderDetailsController extends AdminAppController
         switch ($groupBy) {
             case 'customer':
                 $preparedOrderDetails = $this->OrderDetail->prepareOrderDetailsGroupedByCustomer($orderDetails);
+                if (Configure::read('appDb.FCS_SEND_INVOICES_TO_CUSTOMERS')) {
+                    $this->Invoice = $this->getTableLocator()->get('Invoices');
+                    foreach($preparedOrderDetails as &$orderDetail) {
+                        $orderDetail['invoiceData'] = $this->Invoice->getDataForCustomerInvoice($orderDetail['customer_id'], Configure::read('app.timeHelper')->getCurrentDateForDatabase());
+                    }
+                }
                 $sortField = $this->getSortFieldForGroupedOrderDetails('name');
                 break;
             case 'manufacturer':
@@ -548,7 +592,11 @@ class OrderDetailsController extends AdminAppController
                     $deliveryDay[] = $orderDetail->pickup_day;
                     $manufacturerName[] = StringComponent::slugify($orderDetail->product->manufacturer->name);
                     $productName[] = StringComponent::slugify($orderDetail->product_name);
-                    $customerName[] = StringComponent::slugify($orderDetail->customer->name);
+                    if (!empty($orderDetail->customer)) {
+                        $customerName[] = StringComponent::slugify($orderDetail->customer->name);
+                    } else {
+                        $customerName[] = '';
+                    }
                 }
                 if (!in_array('sort', array_keys($this->getRequest()->getQueryParams()))) {
                     array_multisort(
@@ -785,6 +833,22 @@ class OrderDetailsController extends AdminAppController
 
         if (!$doNotChangePrice) {
             $newProductPrice = round($oldOrderDetail->order_detail_unit->price_incl_per_unit / $oldOrderDetail->order_detail_unit->unit_amount * $productQuantity, 2);
+            if ($oldOrderDetail->order_detail_unit->product_quantity_in_units > 0) {
+                $toleranceFactor = 100;
+                $oldToNewQuantityRelation = $productQuantity / $oldOrderDetail->order_detail_unit->product_quantity_in_units;
+                if ($oldToNewQuantityRelation < 1 / $toleranceFactor || $oldToNewQuantityRelation > $toleranceFactor) {
+                    $message = __d('admin', 'The_new_price_would_be_{0}_for_{1}_please_check_the_unit.', [
+                        '<b>' . Configure::read('app.numberHelper')->formatAsCurrency($newProductPrice) . '</b>',
+                        '<b>' . Configure::read('app.numberHelper')->formatUnitAsDecimal($productQuantity) . ' ' . $oldOrderDetail->order_detail_unit->unit_name . '</b>',
+                    ]);
+                    $this->set([
+                        'status' => 0,
+                        'msg' => $message,
+                    ]);
+                    $this->viewBuilder()->setOption('serialize', ['status', 'msg']);
+                    return;
+                }
+            }
             $newOrderDetail = $this->changeOrderDetailPriceDepositTax($object, $newProductPrice, $object->product_amount);
             $this->changeTimebasedCurrencyOrderDetailPrice($object, $oldOrderDetail, $newProductPrice, $object->product_amount);
         }

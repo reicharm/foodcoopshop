@@ -31,19 +31,30 @@ class SlidersTable extends AppTable
         $validator->notEmptyString('image', __('Please_upload_an_image.'));
         $validator->notEmptyString('position', __('Please_enter_a_number_between_{0}_and_{1}.', [0,100]));
         $validator->range('position', [-1, 101], __('Please_enter_a_number_between_{0}_and_{1}.', [0,100]));
+        $validator->allowEmptyString('link');
+        $validator->urlWithProtocol('link', __('Please_enter_a_valid_internet_address.'));
         return $validator;
     }
 
-    public function getForHome()
+    public function getForHome($appAuth)
     {
+
+        $conditions = [
+            'Sliders.active' => APP_ON
+        ];
+
+        if (! $appAuth->user()) {
+            $conditions['Sliders.is_private'] = APP_OFF;
+        }
+
         $slides = $this->find('all', [
-            'conditions' => [
-                'Sliders.active' => APP_ON
-            ],
+            'conditions' => $conditions,
             'order' => [
                 'Sliders.position' => 'ASC'
             ]
         ]);
+
         return $slides;
+
     }
 }

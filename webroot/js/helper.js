@@ -181,6 +181,12 @@ foodcoopshop.Helper = {
                     result = max;
                 }
             }
+            var amountSwitcherMinus = $(this).closest('.amount-wrapper').find('.amount-switcher-minus .fas');
+            if (result > 1) {
+                amountSwitcherMinus.show();
+            } else {
+                amountSwitcherMinus.hide();
+            }
             inputField.val(result);
         });
     },
@@ -253,7 +259,7 @@ foodcoopshop.Helper = {
                     centeredSlides: true,
                     slidesPerView: 1,
                     initialSlide: 0,
-                    spaceBetween: 7
+                    spaceBetween: 6
                 }
             }
         });
@@ -357,8 +363,8 @@ foodcoopshop.Helper = {
     },
 
     changeOutgoingLinksTargetToBlank: function () {
-        $('a[href^="http://"]:not(".do-not-change-to-target-blank"):not([href^="' + window.location.host + '"])').attr('target', '_blank');
-        $('a[href^="https://"]:not(".do-not-change-to-target-blank"):not([href^="' + window.location.host + '"])').attr('target', '_blank');
+        $('a[href^="http://"]:not(".do-not-change-to-target-blank"):not([href*="' + window.location.host + '"])').attr('target', '_blank');
+        $('a[href^="https://"]:not(".do-not-change-to-target-blank"):not([href*="' + window.location.host + '"])').attr('target', '_blank');
     },
 
     inIframe: function () {
@@ -634,7 +640,7 @@ foodcoopshop.Helper = {
             '/img/bg-v3.1.jpg',
             {
                 positionY: 'top',
-                transitionDuration: 400
+                transitionDuration: 400,
             }
         );
     },
@@ -688,7 +694,7 @@ foodcoopshop.Helper = {
 
         this.destroyCkeditor(name);
 
-        CKEDITOR.timestamp = 'v4.15.0';
+        CKEDITOR.timestamp = 'v4.15.1';
         $('textarea#' + name + '.ckeditor').ckeditor({
             customConfig: '/js/ckeditor/config.js',
             startupFocus : startupFocus
@@ -717,7 +723,7 @@ foodcoopshop.Helper = {
 
         this.destroyCkeditor(name);
 
-        CKEDITOR.timestamp = 'v4.15.0';
+        CKEDITOR.timestamp = 'v4.15.1';
         $('textarea#' + name + '.ckeditor').ckeditor({
             customConfig: '/js/ckeditor/config-big.js'
         });
@@ -732,7 +738,7 @@ foodcoopshop.Helper = {
 
         this.destroyCkeditor(name);
 
-        CKEDITOR.timestamp = 'v4.15.0';
+        CKEDITOR.timestamp = 'v4.15.1';
         $('textarea#' + name + '.ckeditor').ckeditor({
             customConfig: '/js/ckeditor/config-small-with-upload.js'
         });
@@ -844,6 +850,11 @@ foodcoopshop.Helper = {
             }, 500, function () {
                 $(this).remove();
             });
+        });
+        $(document).one('keydown', function(event) {
+            if (event.keyCode == 27) {
+                $('#flashMessage a.closer').trigger('click');
+            }
         });
     },
 

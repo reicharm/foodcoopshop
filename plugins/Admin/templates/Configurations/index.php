@@ -101,7 +101,7 @@ $this->element('addScript', [
                         echo $configuration->value;
                         break;
                     case 'dropdown':
-                        echo $this->Configuration->getConfigurationDropdownOption($configuration->name, $configuration->value);
+                        echo $this->Configuration->getConfigurationDropdownOption($configuration->name, $configuration->value, $appAuth);
                         break;
                     case 'multiple_dropdown':
                         echo $this->Configuration->getConfigurationMultipleDropdownOptions($configuration->name, $configuration->value);
@@ -188,7 +188,12 @@ $this->element('addScript', [
 
         <?php
         foreach ($configurations as $configuration) {
+
             if ($configuration->type != 'readonly') {
+                continue;
+            }
+
+            if (in_array($configuration->name, ['FCS_DEPOSIT_TAX_RATE', 'FCS_INVOICE_HEADER_TEXT']) && !Configure::read('appDb.FCS_SEND_INVOICES_TO_CUSTOMERS')) {
                 continue;
             }
 
@@ -256,6 +261,11 @@ $this->element('addScript', [
         </tr>
 
         <tr>
+            <td>app.isDepositEnabled</td>
+            <td><?php echo Configure::read('app.isDepositEnabled') ? __d('admin', 'yes') : __d('admin', 'no'); ?></td>
+        </tr>
+
+        <tr>
             <td>app.isDepositPaymentCashless</td>
             <td><?php echo Configure::read('app.isDepositPaymentCashless') ? __d('admin', 'yes') : __d('admin', 'no'); ?></td>
         </tr>
@@ -295,6 +305,16 @@ $this->element('addScript', [
         <tr>
             <td>app.sendEmailWhenOrderDetailQuantityOrPriceChanged</td>
             <td><?php echo Configure::read('app.sendEmailWhenOrderDetailQuantityOrPriceChanged') ?  __d('admin', 'yes') : __d('admin', 'no'); ?></td>
+        </tr>
+
+        <tr>
+            <td>app.showTaxSumTableOnOrderDetailPdf</td>
+            <td><?php echo Configure::read('app.showTaxSumTableOnOrderDetailPdf') ?  __d('admin', 'yes') : __d('admin', 'no'); ?></td>
+        </tr>
+
+        <tr>
+            <td>app.selfServiceModeAutoLogoutDesktopEnabled</td>
+            <td><?php echo Configure::read('app.selfServiceModeAutoLogoutDesktopEnabled') ?  __d('admin', 'yes') : __d('admin', 'no'); ?></td>
         </tr>
 
         <?php
