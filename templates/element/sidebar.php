@@ -14,7 +14,7 @@
  */
 ?>
 <div class="sidebar">
-    <?php
+  <?php
     if (!empty($categoriesForMenu)) {
         echo $this->Menu->render($categoriesForMenu, ['id' => 'categories-menu', 'class' => 'vertical menu', 'header' => __('Categories')]);
     }

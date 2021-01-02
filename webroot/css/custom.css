@@ -1,0 +1,39 @@
+body {
+	background-image: url(/img/bg.png);
+       background-size: contain;
+}
+
+.vertical.menu a i.fas {
+    color: #7bbb93;
+}
+
+i.fa.ok, i.fas.ok, i.far.ok {
+    color: #7bbb93;
+}
+
+.vertical.menu a:hover, .vertical.menu a:hover i, .vertical.menu a:hover span.additional-info, .vertical.menu a.active, .vertical.menu a.active i, .vertical.menu a.active span.additional-info {
+    background-color: #7bbb93;
+}
+
+a:not(.btn), a:not(.btn):visited, a:not(.btn):active, a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+    color: #7bbb93;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #7bbb93;
+    border-color: #7bbb93;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.disabled {
+    background-color: #7bbb93;
+    border-color: #7bbb93;
+}
+
+h1 {
+    color: #7bbb93;
+}
+
+.modal-header {
+    background-color: #7bbb93;
+}

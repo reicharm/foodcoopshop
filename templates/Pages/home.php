@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Cake\Core\Configure;
 
@@ -30,6 +30,7 @@ echo $this->element('blogPosts', [
     'useCarousel' => false
 ]);
 
+/*
 if (!empty($newProducts)) {
 
     $this->element('addScript', ['script' =>
@@ -59,7 +60,7 @@ if (!empty($newProducts)) {
     }
 
 }
-
+*/
 if (Configure::read('appDb.FCS_FOODCOOPS_MAP_ENABLED')) {
     echo $this->element('foodCoopShopInstancesMap', [
         'isFirstElement' => (empty($blogPosts) || $blogPosts->count() == 0) && empty($newProducts)
