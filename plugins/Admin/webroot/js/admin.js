@@ -230,7 +230,7 @@ foodcoopshop.Admin = {
                         var email = $('tr.data[data-customer-id="'+customerIds[i]+'"]').find('span.email').html();
                         emails.push(email);
                     }
-                    return emails.join(',');
+                    return emails.join(';');
                 }
             }
         );
